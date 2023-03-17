@@ -1,0 +1,30 @@
+.infoContainer{
+    background-image: url('../../../assets/img/backgroundCard2.0.jpg');
+    width: fit-content;
+    height: fit-content ;
+    color:floralwhite;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 15px 15px rgba(19, 19, 19, 0.5);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.name{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: rgb(73, 73, 248, 0.5);
+}
+
+
+.infoh2{
+    width: 15vw;
+    background-color: rgb(148, 0, 211, 0.5);
+    font-weight: bold;
+    font-size: large;
+}

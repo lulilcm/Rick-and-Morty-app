@@ -1,0 +1,27 @@
+.searchContainer{
+    margin: 1.5em;
+    margin-left: 65%;
+    background-color: rgba(19, 19, 19, 0.5);
+    width: 30vw;
+    height: 10vh;
+    border-radius: 0.5em;
+}
+
+.input{
+    width: 20vw;
+    height: 4vh;
+    text-indent: 0.5em;
+    margin-top: 1.5em;
+    border-radius: 1.5em 0 0 1.5em;
+}
+
+.agregar{
+    height: 4vh;
+    border: none;
+    margin-left: 0.1em;
+    cursor: pointer;
+    background-color: rgb(73, 73, 248, 0.9);
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 0 1.5em 1.5em 0;
+}

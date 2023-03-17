@@ -1,0 +1,40 @@
+.formContainer{
+    background-color: rgb(132, 95, 160, 0.9);
+    width: 20vw;
+    height: 40vh;
+    margin-left: 40%;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   align-items: center;
+   border-radius: 1.5em;
+   box-shadow: 10px 6px 9px 0px rgba(0,0,0,0.71);
+}
+
+.input{
+    text-indent: 0.1em;
+    background-color: transparent;
+    border-radius:1em;
+    box-shadow: 11px 9px 6px -3px rgba(225,120,235,1);
+}
+
+.inputContainer{
+   margin: 3%; 
+  
+}
+
+.label{
+    font-weight:600;
+    font-size: large;
+    text-shadow: 3px 2px 0px rgba(0,0,0,0.46);
+}
+
+.login{
+    margin-top: 3em;
+    width: 5vw;
+    height: 3vh;
+    background-color: transparent;
+    border-radius:1em;
+    box-shadow: 11px 9px 6px -3px rgba(225,120,235,1);
+}

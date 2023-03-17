@@ -1,0 +1,55 @@
+.infoContainer{
+    background-image: url('../../../assets/img/backgroundCard2.0.jpg');
+    width: fit-content;
+    height: fit-content ;
+    color:floralwhite;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 8px 11px 10px 1px rgba(0,0,0,0.75);
+    margin-top: 4%;
+}
+
+.name{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: rgb(73, 73, 248, 0.5);
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.name:hover, .name:focus{
+    background-color: rgb(32, 32, 200);
+}
+
+.onClose:hover, .onClose:focus{
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    border-color: aliceblue;
+    cursor: pointer;
+}
+
+.button{
+    width: 30px;
+    background-color: rgb(226, 62, 62);
+    border-color: aliceblue;
+    margin-left: 90%;
+    font-weight: bolder;
+    border-radius: 0.5em;
+}
+
+
+
+.infoh2{
+    width: 15vw;
+    background-color: rgb(148, 0, 211, 0.5);
+}
+
+.image{
+    width: 20vw;
+    height: 30vh;
+}
