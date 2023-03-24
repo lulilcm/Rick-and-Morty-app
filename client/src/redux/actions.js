@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api_key } from '../ignore';
+import { URL_BASE } from '../utils/index';
 
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const DELETE_CHARACTER = 'DELETE_CHARACTER';
@@ -36,10 +36,7 @@ export const orderCards = (id) => {
 
 export const getCharacterDetail = (detailId) => {
     return function(dispatch){
-        const URL_BASE = 'https://be-a-rym.up.railway.app/api'
-        
-        
-        axios(`${URL_BASE}/character/${detailId}?key=${api_key}`)
+        axios(`${URL_BASE}/detail/${detailId}`)
         .then((response) => dispatch({type: GET_CHARACTER_DETAIL, payload: response.data}));
     };
         

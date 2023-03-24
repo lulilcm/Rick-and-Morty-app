@@ -27,11 +27,11 @@ const Favorites = () => {
     return(
         <div>
             <div>
-                <select name="orderCards" onChange={selectOrderCards}>
+                <select name="orderCards" onChange={selectOrderCards} className={style.selectOption}>
                     <option value="Ascendente">Ascendente</option>
                     <option value="Descendente">Descendente</option>
                 </select>
-                <select name="filterCards" onChange={selectFilterCards}>
+                <select name="filterCards" onChange={selectFilterCards} className={style.selectOption}>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Genderless">Genderless</option>
@@ -44,7 +44,7 @@ const Favorites = () => {
                         <div className={style.favContainer}> 
                             <Card
                             key={id}
-                            /* id={id} */
+                            id={id}
                             name={name}
                             species={species}
                             gender={gender}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate  } from 'react-router-dom';
 import './App.css'
-import { Nav, Detail, Cards, Form, Favorites, About
- } from './components';
- import { api_key } from './ignore'
+import { Nav, Detail, Cards, Form, Favorites, About } from './components';
+ import { URL_BASE, username, password } from  './utils/index';
+
 
 function App () {
   
@@ -12,9 +12,6 @@ function App () {
   // uso el hook useNavigate para que cuando el usuario haga login lo lleve a '/home'
   const navigate = useNavigate();
   const[access, setAccess] = useState(false);
-
-  const username = 'morenolourdes153@gmail.com';
-  const password = '2002lcm'; 
   
   const login = (userData) => {
     if (userData.username === username && userData.password === password){ 
@@ -28,13 +25,13 @@ function App () {
  }, [access,navigate]);
   
   const searchCharacter = (id) => {
-    const URL_BASE = 'https://be-a-rym.up.railway.app/api';
 
     if(oldCharacters.find((character) => character.id === id)){
       return alert('Personaje repetido');
     }
     
-    fetch(`${URL_BASE}/character/${id}?key=${api_key}`)
+    /* fetch(`${URL_BASE}/character/${id}?key=${api_key}`) */
+    fetch(`${URL_BASE}/onsearch/${id}`)
     .then((response) => response.json())
     .then((data) => {
       if(data.name){
@@ -65,7 +62,7 @@ function App () {
       {location.pathname !== '/' && <Nav onSearch={searchCharacter}  />}
 
       
-      
+
       <Routes>
 
         <Route path='/favorites' element={<Favorites />} />
@@ -79,7 +76,10 @@ function App () {
 
         <Route path='/detail/:detailId' element={<Detail />}/>
 
+       
+        
       </Routes>
+        
     </div>
   )
 }

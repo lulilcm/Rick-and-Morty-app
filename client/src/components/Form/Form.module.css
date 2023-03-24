@@ -37,4 +37,5 @@
     background-color: transparent;
     border-radius:1em;
     box-shadow: 11px 9px 6px -3px rgba(225,120,235,1);
+    cursor: pointer;
 }

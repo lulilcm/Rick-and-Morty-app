@@ -5,11 +5,12 @@ import Detail from "./Detail/Detail";
 import Form from "./Form/Form";
 import About from './About/About'
 
+
 export{
     About,
     Cards,
     Nav,
     Favorites,
     Detail,
-    Form
+    Form, 
 }
