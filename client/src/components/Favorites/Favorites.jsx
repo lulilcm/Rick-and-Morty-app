@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { orderCards, filterCards } from "../../redux/actions";
+import { orderCards, filterCards, getFavorites, cleanFavorites } from "../../redux/actions";
 import style from './Favorites.module.css'
 
 
@@ -19,10 +19,11 @@ const Favorites = () => {
     };
 
     useEffect(() => {
-        return () => {
-        }
-    }, [])
-
+        dispatch(getFavorites());
+        return() => {
+            dispatch(cleanFavorites());
+        };
+    },[]);
 
     return(
         <div>

@@ -1,8 +1,9 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate  } from 'react-router-dom';
 import './App.css'
 import { Nav, Detail, Cards, Form, Favorites, About } from './components';
- import { URL_BASE, username, password } from  './utils/index';
+ import { URL_BASE } from  './utils/index';
 
 
 function App () {
@@ -12,13 +13,16 @@ function App () {
   // uso el hook useNavigate para que cuando el usuario haga login lo lleve a '/home'
   const navigate = useNavigate();
   const[access, setAccess] = useState(false);
-  
-  const login = (userData) => {
-    if (userData.username === username && userData.password === password){ 
-     setAccess(true);
-     navigate('/home');
-    }
-  };
+
+  function login(userData) {
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/login';
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+       const { access } = data;
+       setAccess(data);
+       access && navigate('/home');
+    });
+ }
 
   useEffect(() => {
     !access && navigate('/');
@@ -30,7 +34,7 @@ function App () {
       return alert('Personaje repetido');
     }
     
-    /* fetch(`${URL_BASE}/character/${id}?key=${api_key}`) */
+    
     fetch(`${URL_BASE}/onsearch/${id}`)
     .then((response) => response.json())
     .then((data) => {

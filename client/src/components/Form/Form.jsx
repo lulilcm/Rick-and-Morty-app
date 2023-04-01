@@ -5,12 +5,12 @@ import validateData from "./validation";
 const Form = (props) => {
 
   const[ userData, setUserData ] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
   const[ errors, setErrors ] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -35,9 +35,9 @@ const Form = (props) => {
   return(
       <form className={style.formContainer} onSubmit={handleSubmit}>
         <div className={style.inputContainer}>
-          <label htmlFor="username" className={style.label}>Username: </label>
-          <input type="text" name="username" value={userData.username} onChange={handleInputChange} className={style.input} />
-          <p>{errors.username}</p>
+          <label htmlFor="email" className={style.label}>Username: </label>
+          <input type="text" name="email" value={userData.email} onChange={handleInputChange} className={style.input} />
+          <p>{errors.email}</p>
         </div>
 
         <div className={style.inputContainer}>

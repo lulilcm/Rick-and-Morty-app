@@ -1,14 +1,14 @@
 const validateData =  (userData, errors, setErrors) => {
   // username
-  if (!userData.username) 
-    setErrors({ ...errors, username:'Completar este campo'});
-  else if (userData.username.length > 35) 
+  if (!userData.email) 
+    setErrors({ ...errors, email:'Completar este campo'});
+  else if (userData.email.length > 35) 
     setErrors({ ...errors, username:'No puede sobrepasar los 35 caracteres' });
   else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(userData.username)){
     setErrors({ ...errors, username:'Email invalido' });
   } 
   else{
-    setErrors({ ...errors, username:'' });
+    setErrors({ ...errors, email:'' });
   }
 
   // password
