@@ -10,15 +10,12 @@ const getFav = (req, res) => {
 };
 
 const deleteFav = (req, res) => {
-    try {
-        
-        const { id } = req.params;
-        favs = favs.filter((char) => char.id !== Number(id) );
+
+    const { id } = req.params;
+      
+    favs = favs.filter((char) => char.id != id );
     
-        res.status(200).json({ status: 'ok' });
-    } catch (error) {
-        console.log(error);
-    }
+ res.status(200).json({ status: 'ok' });
 };
 
 module.exports = {

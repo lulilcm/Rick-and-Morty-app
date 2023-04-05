@@ -22,13 +22,10 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use((req, res, next) => {
-  const begin = '/rickandmorty';
-  const end = req.url;
-
-  begin.concat(end);
+/* server.use((req, res, next) => {
+  res.send('rickandmorty/'.concat(req.url));
   next();
-});
+}); */
 
 server.use(express.json());
 
