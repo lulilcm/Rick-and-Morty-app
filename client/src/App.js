@@ -14,37 +14,48 @@ function App () {
   const navigate = useNavigate();
   const[access, setAccess] = useState(false);
 
-  function login(userData) {
+  const login = async(userData) => {
     const { email, password } = userData;
-    const URL = 'http://localhost:3001/login';
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+    try {
+      const URL = 'http://localhost:3001/login';
+      const response = await axios(URL + `?email=${email}&password=${password}`);
+      const { access } = response.data;
+      
+      setAccess(access);
+      access && navigate('/home');
+    } catch (error) {
+      console.log(error);
+    }
+
+
+/*     axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
        const { access } = data;
        setAccess(data);
        access && navigate('/home');
-    });
+    }); */
  }
 
   useEffect(() => {
     !access && navigate('/');
  }, [access,navigate]);
   
-  const searchCharacter = (id) => {
+  const searchCharacter = async(id) => {
 
     if(oldCharacters.find((character) => character.id === id)){
       return alert('Personaje repetido');
     }
-    
-    
-    fetch(`${URL_BASE}/onsearch/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if(data.name){
-        setCharacters((oldCharacters) => [...oldCharacters, data]);
+    try {
+      const charFound = await
+      axios.get(`${URL_BASE}/onsearch/${id}`);
+      const response = charFound.data;
+      
+      if(response.name){
+        setCharacters((oldCharacters) => [...oldCharacters, response]);
       }
-      else{
-        window.alert('No hay personajes con ese ID');
-      }
-    });
+    } catch (error) {
+      console.log(error);  
+    }
+    
   };
 
 

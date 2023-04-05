@@ -12,7 +12,7 @@ export const CLEAN_FAVORITES = 'CLEAN_FAVORITES';
 
 
 
-export const addFavorite = (character) => {
+/* export const addFavorite = (character) => {
     const endpoint = 'http://localhost:3001/postFav';
  return (dispatch) => {
     axios.post(endpoint, character).then(({ data }) => {
@@ -22,24 +22,23 @@ export const addFavorite = (character) => {
         });
     });
   };
-};
+}; */
 
 
 export const getFavorites = () => {
-    return (dispatch) => {
-        axios.get(`${URL_BASE}/getFav`)
-        .then(({data}) => {
-            return dispatch({
-                type: GET_FAVORITES,
-                payload: data
-            });
-        });
-    };
+    return async(dispatch) => {
+        const response = await axios.get(`${URL_BASE}/getFav`);
+        dispatch({ type: GET_FAVORITES, payload: response.data })
+    };    
 };
 
 
 export const removeFav = (id) => {
-    return (dispatch) => {
+    console.log(id);
+    return { type: REMOVE_FAV, payload:id }
+
+
+/*     return (dispatch) => {
         axios.delete(`${URL_BASE}/deleteFav/${id}`)
         .then(({data}) => {
             return dispatch({
@@ -47,7 +46,7 @@ export const removeFav = (id) => {
                 payload: data
             });
         });
-    };
+    }; */
 };
    
 
@@ -66,9 +65,9 @@ export const orderCards = (id) => {
 
 
 export const getCharacterDetail = (detailId) => {
-    return function(dispatch){
-        axios(`${URL_BASE}/detail/${detailId}`)
-        .then((response) => dispatch({type: GET_CHARACTER_DETAIL, payload: response.data}));
+    return async function(dispatch){
+        const response = await axios.get(`${URL_BASE}/detail/${detailId}`);
+        dispatch({type: GET_CHARACTER_DETAIL, payload: response.data});
     };
         
 };

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from './Card.module.css';
-import { connect } from 'react-redux';
-import { addFavorite, removeFav } from "../../redux/actions";
+import { connect, useDispatch } from 'react-redux';
+/* import { removeFav } from "../../redux/actions"; */
+import axios from 'axios';
+import { getFavorites } from "../../redux/actions";
 
 
 
-
-
-function Card({ id, name, species, gender, image, onClose, removeFav, myFavorites, addFavorite }) {
+function Card({ id, name, species, gender, image, onClose, myFavorites }) {
    const[ isFav, setIsFav ] = useState(false);
-
+   const dispatch = useDispatch();
 
    useEffect(() => {
       myFavorites.forEach((fav) => {
@@ -20,7 +20,18 @@ function Card({ id, name, species, gender, image, onClose, removeFav, myFavorite
       });
    },[myFavorites]); 
 
+   const addFavorite = async(character) => {
+      await axios.post('http://localhost:3001/postFav',character);
+      console.log('ok');
+   };
 
+   const removeFav = async(id) => {
+      await axios.delete(`http://localhost:3001/deleteFav/${id}`);
+      dispatch(getFavorites());
+      alert('eliminado con exito');
+      /* /deleteFav/:id */
+   };
+   
    const handleFavorite = () => {
       if(isFav) {
          setIsFav(false);
@@ -57,16 +68,13 @@ function Card({ id, name, species, gender, image, onClose, removeFav, myFavorite
    );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return{
-     addFavorite: (character) => {
-        dispatch(addFavorite(character));
-     },   
+/* const mapDispatchToProps = (dispatch) => {
+  return{   
      removeFav: (id) => {
         dispatch(removeFav(id));
      },
    };
-};
+}; */
 
 const mapStateToProps = (state) => {
    return{
@@ -74,4 +82,4 @@ const mapStateToProps = (state) => {
    }
 } 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, null)(Card);
