@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const router = require('./routes');
+const { conn } = require('./DB_connection');
 
 
 const server = express();
@@ -35,7 +36,10 @@ server.use(cors());
 
 server.use(router);
 
-server.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
-});
+conn.sync({ force: true }).then(() => {
+  server.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
+  });
+}).catch((erroor) => console.log(erroor));
+
 
