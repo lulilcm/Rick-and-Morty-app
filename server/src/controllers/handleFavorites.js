@@ -1,13 +1,10 @@
-let favs = require('../utils/favs');
+/* let favs = require('../utils/favs');
 
 const postFav = (req, res) => {
     favs.push(req.body);
     res.status(200).json({ status: 'ok' });
 };
 
-const getFav = (req, res) => {
-    res.status(200).json(favs);
-};
 
 const deleteFav = (req, res) => {
 
@@ -15,11 +12,26 @@ const deleteFav = (req, res) => {
       
     favs = favs.filter((char) => char.id != id );
     
- res.status(200).json({ status: 'ok' });
+    res.status(200).json({ status: 'ok' });
 };
 
 module.exports = {
     postFav,
     deleteFav,
     getFav,
+}; */
+
+const { Favorite } = require("../DB_connection");
+
+
+
+const getFav = async(req, res) => {
+    try {
+        const favorites = await Favorite.findAll();
+        res.status(200).json(favorites);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
+
+module.exports = getFav;
