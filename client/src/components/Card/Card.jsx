@@ -8,7 +8,7 @@ import { getFavorites } from "../../redux/actions";
 
 
 
-function Card({ id, name, species, gender, image, onClose, myFavorites }) {
+function Card({ id, name, species, origin, status, gender, image, onClose, myFavorites }) {
    const[ isFav, setIsFav ] = useState(false);
    const dispatch = useDispatch();
 
@@ -63,6 +63,8 @@ function Card({ id, name, species, gender, image, onClose, myFavorites }) {
          </div>
                      
          <h2 className={styles.infoh2}>{species}</h2>
+         <h2 className={styles.infoh2}>{origin.name}</h2>
+         <h2 className={styles.infoh2}>{status}</h2>
          <h2 className={styles.infoh2}>{gender}</h2>
       </div>
    );
