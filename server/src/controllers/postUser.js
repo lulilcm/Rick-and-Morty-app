@@ -6,7 +6,7 @@ const postUser = async(req, res) => {
   const { id, email, password } = req.body;
   console.log(req.body);
   try {
-    /* userValidate(email, password, error); */
+    userValidate(email, password);
     if(!email) {res.status(400).json({ message: 'Faltan datos'});}
     else if(!password) {res.status(400).json({ message: 'Faltan datos'});}
     else{

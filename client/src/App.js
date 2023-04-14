@@ -26,13 +26,6 @@ function App () {
     } catch (error) {
       console.log(error);
     }
-
-
-/*     axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-       const { access } = data;
-       setAccess(data);
-       access && navigate('/home');
-    }); */
  }
 
   useEffect(() => {
