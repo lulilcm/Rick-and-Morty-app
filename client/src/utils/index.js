@@ -4,4 +4,5 @@
 export const password = '2002lcm';  */
 
 // !URL Y KEY DE LA API
-export const URL_BASE = 'http://localhost:3001';
+// export const URL_BASE = 'http://localhost:3001';
+export const URL_BASE = 'rick-and-morty-61uxjsbef-lulilcm.vercel.app';
